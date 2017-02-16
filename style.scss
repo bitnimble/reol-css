@@ -1,0 +1,384 @@
+body {
+	background-color: black;
+}
+
+$frametime: 0.03s;
+$debug: true;
+
+@keyframes expand {
+	0% { width: 0px; }
+	10% { width: 1px; }
+	20% { width: 2px; }
+	30% { width: 4px; }
+	40% { width: 8px; }
+	50% { width: 24px; }
+	60% { width: 81px; }
+	70% { width: 87px; }
+	80% { width: 89px; }
+	90% { width: 90px; }
+	100% { width: 90px; }
+}
+
+@keyframes expand-top {
+	0% { margin-top: -2px; height: 1px; }
+	25% { margin-top: -4px; height: 3px; }
+	50% { margin-top: -39px; height: 38px; }
+	75% { margin-top: -52px; height: 51px; }
+	100% { margin-top: -54px; height: 53px; }
+}
+
+@keyframes expand-bot {
+	0% { height: 1px; }
+	25% { height: 4px; }
+	50% { height: 39px; }
+	75% { height: 52px; }
+	100% { height: 54px; }
+}
+
+@keyframes collapse-top {
+	0% { height: 32px; margin-bottom: 22px; }
+	33% { height: 26px; margin-bottom: 28px; }
+	66% { height: 23px; margin-bottom: 31px; }
+	100% { height: 22px; margin-bottom: 32px; }
+}
+
+@keyframes collapse-bot {
+	0% { height: 32px; margin-top: 23px; }
+	33% { height: 26px; margin-top: 29px; }
+	66% { height: 23px; margin-top: 32px; }
+	100% { height: 22px; margin-top: 32px; }
+}
+
+@keyframes shift-right {
+	0% { left: 43px; }
+	20% { left: 55px; }
+	40% { left: 61px; }
+	60% { left: 62px; }
+	80% { left: 63px; }
+	100% { left: 64px; }
+}
+
+@keyframes appear {
+	0% { opacity: 1; }
+	100% { opacity: 1; }
+}
+
+@keyframes disappear {
+	0% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+@keyframes shrink-stroke {
+	0% { stroke-width: 30; }
+	16% { stroke-width: 18; }
+	33% { stroke-width: 10; }
+	50% { stroke-width: 7; }
+	66% { stroke-width: 4; }
+	83% { stroke-width: 2; }
+	100% { stroke-width: 0.2; }
+}
+
+@keyframes rotate-ring {
+	0% { transform: scaleX(-1) rotate(0deg); }
+	83% { transform: scaleX(-1) rotate(30deg); }
+	100% { transform: scaleX(-1) rotate(90deg); }
+}
+
+@keyframes circle-expand {
+	0% { width: 20px; height: 20px; }
+	14% {width: 40px; height: 40px; }
+	29% { width: 100px; height: 100px; }
+	43% { width: 132px; height: 132px; }
+	100% { width: 132px; height: 132px; }
+}
+
+@keyframes circle-expand-inner {
+	0% { stroke-width: 4; d: path("M5,2 A3,3 1 0 1 5,8 A3,3 1 0 1 5,2"); }
+	14% { stroke-width: 4.5; d: path("M5,2.25 A2.75,2.75 1 0 1 5,7.75 A2.75,2.75 1 0 1 5,2.25"); }
+	29% { stroke-width: 4.8; d: path("M5,2.4 A2.6,2.6 1 0 1 5,7.6 A2.6,2.6 1 0 1 5,2.4"); }
+	43% { stroke-width: 4.5; d: path("M5,2.25 A2.75,2.75 1 0 1 5,7.75 A2.75,2.75 1 0 1 5,2.25"); }
+	57% { stroke-width: 3.7; d: path("M5,1.85 A3.15,3.15 1 0 1 5,8.15 A3.15,3.15 1 0 1 5,1.85"); }
+	71% { stroke-width: 2.8; d: path("M5,1.4 A3.6,3.6 1 0 1 5,8.6 A3.6,3.6 1 0 1 5,1.4"); }
+	86% { stroke-width: 2; d: path("M5,1 A4,4 1 0 1 5,9 A4,4 1 0 1 5,1"); }
+	100% { stroke-width: 1.6; d: path("M5,0.8 A4.2,4.2 1 0 1 5,9.2 A4.2,4.2 1 0 1 5,0.7999999999999998"); }
+}
+
+@keyframes l-expand1 {
+	0% { height: 7px; top: 103px; }
+	33% { height: 102px; top: 8px; }
+	66% { height: 108px; top: 2px; }
+	100% { height: 110px; top: 0px; }
+}
+
+@keyframes l-collapse1 {
+	0% { height: 108px; }
+	20% { height: 102px; }
+	40% { height: 96px; }
+	60% { height: 80px; }
+	80% { height: 51px; }
+	100% { height: 0px; }
+}
+
+@keyframes l-expand2 {
+	0% { height: 61px; top: 71px; }
+	25% { height: 97px; top: 35px; }
+	50% { height: 115px; top: 17px; }
+	75% { height: 126px; top: 6px; }
+	100% { height: 132px; top: 0px; }
+}
+
+@keyframes l-expand3 {
+	0% { width: 32px; }
+	25% { width: 50px; }
+	50% { width: 62px; }
+	75% { width: 66px; }
+	100% { width: 68px; }
+}
+
+@keyframes l-expand4 {
+	0% { height: 22px; top: 110px; }
+	16% { height: 27px; top: 105px; }
+	33% { height: 47px; top: 85px; }
+	50% { height: 125px; top: 7px; }
+	66% { height: 129px; top: 3px; }
+	83% { height: 131px; top: 1px; }
+	100% { height: 132px; top: 0px; }
+}
+
+@keyframes l-expand5 {
+	0% { width: 23px; }
+	16% { width: 26px; }
+	33% { width: 37px; }
+	50% { width: 85px; }
+	66% { width: 87px; }
+	83% { width: 88px; }
+	100% { width: 89px; }
+}
+
+@keyframes boxmove {
+	0% { left: 1px; }
+	14% { left: 2px; }
+	29% { left: 6px; }
+	43% { left: 6px; }
+	57% { left: 60px; }
+	71% { left: 98px; }
+	86% { left: 98px; }
+	100% { left: 370px; }
+}
+
+#wrapper {
+	position: absolute;
+	top: 45%;
+	left: 45%;
+
+	@if $debug {
+		border: 1px solid red;
+	}
+}
+
+.e-wrapper, .o-wrapper, .l-wrapper {
+	display: inline-block;
+	position: relative;
+	height: 132px;
+	margin: 0px 5px;
+
+	@if $debug {
+		border: 1px solid green;
+	}
+}
+
+.e-wrapper {
+	width: 90px;
+}
+
+.o-wrapper {
+	width: 132px;
+	transform: translateY(-56px);
+}
+
+.l-wrapper {
+	width: 90px;
+	transform: translateY(-56px);
+}
+
+.e-topbar, .e-middlebar, .e-bottombar, .o-innerdot, .o-ring {
+	position: relative;
+	background-color: white;
+}
+
+/*********************************************************************************************************************/
+/*********************************************************************************************************************/
+/*********************************************************************************************************************/
+
+.e-topbar {
+	height: 1px;
+	margin-top: -2px;
+	margin-bottom: 1px;
+	animation: 	expand ($frametime * 10) linear,
+				expand-top ($frametime * 4) linear ($frametime * 10),
+				collapse-top ($frametime * 4) linear ($frametime * 14);
+	animation-fill-mode: forwards;
+}
+
+.e-middlebar {
+	height: 22px;
+	animation: 	expand ($frametime * 10) linear;
+	animation-fill-mode: forwards;
+}
+
+.e-bottombar {
+	margin-top: 1px;
+	height: 1px;
+	animation: 	expand ($frametime * 10) linear,
+				expand-bot ($frametime * 4) linear ($frametime * 10),
+				collapse-bot ($frametime * 4) linear ($frametime * 14);
+	animation-fill-mode: forwards;
+}
+
+/*********************************************************************************************************************/
+/*********************************************************************************************************************/
+/*********************************************************************************************************************/
+
+.o-innerdot {
+	opacity: 0;
+	position: absolute;
+	top: 66px;
+	width: 4px;
+	height: 4px;
+
+	border-radius: 100%;
+	animation: 	appear 0s ($frametime * 11),
+				shift-right ($frametime * 7) linear ($frametime * 11),
+				disappear 0s linear ($frametime * 18);
+	animation-fill-mode: forwards;
+}
+
+.o-ring-arc {
+	@if $debug {
+		border: 1px solid lightblue;
+	}
+
+	position: absolute;
+	width: 132px;
+	height: 132px;
+
+	transform: scaleX(-1);
+	opacity: 0;
+	animation: 	appear 0s ($frametime * 10),
+	 			rotate-ring ($frametime * 7) linear ($frametime * 10),
+				disappear 0s linear ($frametime * 17.5);
+	animation-fill-mode: forwards;
+}
+
+.o-ring-arc path {
+	animation: shrink-stroke ($frametime * 7) linear ($frametime * 10);
+	animation-fill-mode: forwards;
+}
+
+.o-ring-circle {
+	@if $debug {
+		border: 1px solid red;
+	}
+
+	opacity: 0;
+	position: absolute;
+	top: 66px;
+	left: 66px;
+	transform: translate(-50%, -50%);
+	width: 132px;
+	height: 132px;
+
+	animation: appear 0s ($frametime * 19), circle-expand ($frametime * 7) linear ($frametime * 19);
+	animation-fill-mode: forwards;
+}
+
+.o-ring-circle path {
+	animation: circle-expand-inner ($frametime * 7) linear ($frametime * 19);
+	animation-fill-mode: forwards;
+}
+
+/*********************************************************************************************************************/
+/*********************************************************************************************************************/
+/*********************************************************************************************************************/
+
+.l-lefthalfshaft, .l-leftborder, .l-innerborder, .l-leftshaft, .l-bottomshaft, .thebox, .dashed {
+	position: absolute;
+	background-color: white;
+}
+
+.l-lefthalfshaft {
+	left: 1px;
+	opacity: 0;
+	height: 7px;
+	top: 103px;
+
+	width: 9px;
+
+	animation: 	appear 0s ($frametime * 17),
+				l-expand1 ($frametime * 4) linear ($frametime * 17),
+				l-collapse1 ($frametime * 6) linear ($frametime * 22);
+	animation-fill-mode: forwards;
+}
+
+.l-leftborder {
+	height: 0px;
+	top: 71px;
+
+	width: 1px;
+
+	animation: l-expand2 ($frametime * 5) linear ($frametime * 18);
+	animation-fill-mode: forwards;
+}
+
+.l-innerborder {
+	left: 22px;
+	width: 0px;
+
+	top: 110px;
+	height: 1px;
+
+	animation: l-expand3 ($frametime * 5) linear ($frametime * 18);
+	animation-fill-mode: forwards;
+}
+
+.l-leftshaft {
+	left: 1px;
+	width: 21px;
+
+	height: 0px;
+
+	animation: l-expand4 ($frametime * 7) linear ($frametime * 23);
+	animation-fill-mode: forwards;
+}
+
+.l-bottomshaft {
+	left: 1px;
+	height: 22px;
+
+	top: 110px;
+
+	width: 0px;
+
+	animation: l-expand5 ($frametime * 7) linear ($frametime * 23);
+	animation-fill-mode: forwards;
+}
+
+/*********************************************************************************************************************/
+/*********************************************************************************************************************/
+/*********************************************************************************************************************/
+
+.thebox {
+	top: 119px;
+
+	width: 13px;
+	height: 13px;
+
+	transform: translateX(-370px);
+
+	animation: boxmove ($frametime * 8) linear  ($frametime * 12);
+	animation-fill-mode: forwards;
+}
+
+.dashed {
+
+}
