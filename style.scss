@@ -162,7 +162,7 @@ $debug: false;
 	57% { left: 60px; }
 	71% { left: 98px; }
 	86% { left: 98px; }
-	100% { left: 370px; }
+	100% { left: 364px; }
 }
 
 @keyframes dashedmove {
@@ -172,6 +172,62 @@ $debug: false;
 	60% { left: -5px; width: 160px; }
 	80% { left: 100px; width: 50px; }
 	100% { left: 150px; width: 0; }
+}
+
+@keyframes r-expand1 {
+	0% { width: 7px; }
+	25% { width: 41px; }
+	50% { width: 55px; }
+	75% { width: 59px; }
+	100% { width: 60px; }
+}
+
+@keyframes r-expand2 {
+	0% { width: 1px; }
+	16% { width: 6px; }
+	33% { width: 9px; }
+	50% { width: 17px; }
+	66% { width: 39px; }
+	83% { width: 58px; }
+	100% { width: 60px; }
+}
+
+@keyframes r-boxmove {
+	0% { left: 43px; }
+	20% { left: 41px; }
+	40% { left: 32px; }
+	60% { left: 14px; }
+	80% { left: 3px; }
+	100% { left: 0px; }
+}
+
+@keyframes r-expand3 {
+	0% { height: 7px; }
+	25% { height: 48px; }
+	50% { height: 68px; }
+	75% { height: 71px; }
+	100% { height: 72px; }
+}
+
+@keyframes r-expand4 {
+	0% { height: 4px; }
+	16% { height: 11px; }
+	33% { height: 17px; }
+	50% { height: 30px; }
+	66% { height: 50px; }
+	83% { height: 52px; }
+	100% { height: 53px; }
+}
+
+@keyframes r-expand5 {
+	0% { height: 1px; }
+	14% { height: 2px; }
+	29% { height: 8px; }
+	43% { height: 13px; }
+	57% { height: 14px; }
+	71% { height: 15px; }
+	86% { height: 15.5px; }
+	100% { height: 17px; }
 }
 
 #wrapper {
@@ -186,7 +242,7 @@ $debug: false;
 	//transform: scale3d(2, 2, 1);
 }
 
-.e-wrapper, .o-wrapper, .l-wrapper {
+.e-wrapper, .o-wrapper, .l-wrapper, .r-wrapper {
 	display: inline-block;
 	position: relative;
 	height: 132px;
@@ -195,6 +251,11 @@ $debug: false;
 	@if $debug {
 		border: 1px solid green;
 	}
+}
+
+.r-wrapper {
+	width: 108px;
+	transform: translate(7px, -56px);
 }
 
 .e-wrapper {
@@ -214,6 +275,165 @@ $debug: false;
 .e-topbar, .e-middlebar, .e-bottombar, .o-innerdot, .o-ring {
 	position: relative;
 	background-color: white;
+}
+
+/*********************************************************************************************************************/
+/*********************************************************************************************************************/
+/*********************************************************************************************************************/
+
+.actual-r {
+	width: 110px;
+	height: 132px;
+	clip-path: url(#r-clippath);
+}
+
+.r-top-topbar, .r-top-bottombar {
+	height: 1px;
+	width: 0px;
+
+	background-color: white;
+
+	position: absolute;
+	right: 50px;
+
+	animation: r-expand1 ($frametime * 5) linear ($frametime * 10);
+	animation-fill-mode: forwards;
+}
+
+.r-top-topbar {
+	top: 0;
+}
+
+.r-top-bottombar {
+	top: 21px;
+}
+
+.r-top {
+	height: 22px;
+	width: 0px;
+
+	background-color: white;
+	position: absolute;
+	top: 0;
+	right: 50px;
+
+	animation: r-expand2 ($frametime * 7) linear ($frametime * 15);
+	animation-fill-mode: forwards;
+}
+
+.r-top-box {
+	width: 13px;
+	height: 13px;
+
+	background-color: white;
+
+	position: absolute;
+	left: 43px;
+	top: 8px;
+
+	opacity: 0;
+
+	animation: 	appear 0s linear ($frametime * 12),
+				r-boxmove ($frametime * 6) linear ($frametime * 13);
+	animation-fill-mode: forwards;
+
+	@if $debug {
+		background-color: red;
+	}
+}
+
+.r-leftshaft-leftbar {
+	width: 1px;
+	height: 0px;
+
+	background-color: white;
+
+	position: absolute;
+	top: 60px;
+	left: 0;
+
+	animation: r-expand3 ($frametime * 5) linear ($frametime * 10);
+	animation-fill-mode: forwards;
+}
+
+.r-leftshaft {
+	width: 20px;
+	height: 0px;
+
+	background-color: white;
+
+	position: absolute;
+	top: 78px;
+	left: 0;
+
+	animation: r-expand4 ($frametime * 7) linear ($frametime * 15);
+	animation-fill-mode: forwards;
+}
+
+.r-rightshaft {
+	width: 64px;
+	height: 0px;
+
+	background-color: white;
+
+	position: absolute;
+	top: 78px;
+	left: 43px;
+
+	animation: r-expand4 ($frametime * 7) linear ($frametime * 15);
+	animation-fill-mode: forwards;
+
+	@if $debug {
+		border: 1px solid red;
+	}
+}
+
+.r-diagpiece {
+	position: absolute;
+	background-color: white;
+
+	height: 0px;
+	width: 80px;
+
+	animation: r-expand5 ($frametime * 8) linear ($frametime * 12);
+	animation-fill-mode: forwards;
+
+	transform: rotate(45deg) skew(45deg) translate(-20px, 31px);
+}
+
+.r-body-1 {
+	top: -22.5px;
+	left: 60px;
+}
+
+.r-body-2 {
+	top: 0;
+	left: 60px;
+}
+
+.r-body-3 {
+	top: 22.5px;
+	left: 60px;
+}
+
+.r-body-4 {
+	top: 22.5px;
+	left: 37.5px;
+}
+
+.r-body-5 {
+	top: 22.5px;
+	left: 15px;
+}
+
+.r-body-6 {
+	top: 22.5px;
+	left: -7.5px;
+}
+
+.r-body-7 {
+	top: 22.5px;
+	left: -30px;
 }
 
 /*********************************************************************************************************************/
@@ -384,10 +604,17 @@ $debug: false;
 	width: 13px;
 	height: 13px;
 
-	transform: translateX(-370px);
+	transform: translateX(-364px);
 
-	animation: boxmove ($frametime * 8) linear  ($frametime * 12);
+	opacity: 0;
+
+	animation:	appear 0s linear ($frametime * 12),
+				boxmove ($frametime * 8) linear  ($frametime * 12);
 	animation-fill-mode: forwards;
+
+	@if $debug {
+		background-color: blue;
+	}
 }
 
 .dashed {
